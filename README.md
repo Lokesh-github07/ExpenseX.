@@ -240,7 +240,7 @@ MAIL_APP_PASSWORD=YOUR_GOOGLE_APP_PASSWORD
 **1. Clone the repository**
 
 ```bash
-git clone https://github.com/Lokesh-github07/ExpenseTracker.git
+git clone https://github.com/Lokesh-github07/ExpenseX.
 cd ExpenseTracker
 ```
 
