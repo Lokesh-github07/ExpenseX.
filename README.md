@@ -1,92 +1,159 @@
-# 💰 ExpenseX.
+# 💰 ExpenseX
 
-A full-stack Expense Tracker application built with **Java Spring Boot 3.5.4**, **MySQL**, **Spring Security**, **JWT authentication**, **Thymeleaf**, and **Docker**.
+![Java](https://img.shields.io/badge/Java-21-orange?logo=openjdk&logoColor=white)
+![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.5.4-6DB33F?logo=springboot&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-8.0-4479A1?logo=mysql&logoColor=white)
+![Spring Security](https://img.shields.io/badge/Spring%20Security-Security-6DB33F?logo=springsecurity&logoColor=white)
+![JWT](https://img.shields.io/badge/JWT-Authentication-black?logo=jsonwebtokens&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-Containerized-2496ED?logo=docker&logoColor=white)
+![Maven](https://img.shields.io/badge/Maven-Build-C71A36?logo=apachemaven&logoColor=white)
+![Swagger](https://img.shields.io/badge/Swagger-OpenAPI-85EA2D?logo=swagger&logoColor=black)
 
-The application allows users to securely manage income and expenses, create budgets and categories, view dashboards and analytics, generate PDF/Excel reports, and perform authentication using OTP and JWT-based security.
+A full-stack **personal expense management application** built with **Java 21, Spring Boot, MySQL, Spring Security, JWT, Thymeleaf, and Docker**.
+
+ExpenseX allows users to securely manage **expenses, income, budgets, categories, authentication, analytics, and financial reports** through a web-based interface and REST APIs.
 
 ---
 
-## 🚀 Features
+## 📌 About
 
-### 🔐 Authentication & Security
+ExpenseX is designed as a practical full-stack application demonstrating backend development, authentication, database management, REST API design, reporting, and containerization.
+
+The application provides:
+
+- 🔐 Secure authentication
+- 💸 Expense management
+- 💰 Budget management
+- 🏷️ Category management
+- 📊 Financial dashboards
+- 📈 Analytics
+- 📄 PDF & Excel reports
+- 📧 Email OTP verification
+- 🔑 JWT access & refresh tokens
+- 📱 SMS transaction integration
+- 🐳 Docker deployment
+- 📚 Swagger API documentation
+
+---
+
+# 🚀 Features
+
+## 🔐 Authentication & Security
+
 - User registration
 - Email OTP verification
-- Login with OTP verification
-- JWT-based authentication
-- Access token and refresh token support
-- Forgot password functionality
+- Login OTP verification
+- JWT authentication
+- Access and refresh tokens
+- Forgot password
 - Password reset
 - Change password
 - Account activation/deactivation
-- Spring Security integration
+- Spring Security
 - CORS configuration
+- Environment-based secrets
 
-### 💸 Expense Management
+## 💸 Expense Management
+
 - Add expenses
 - View expenses
 - Edit expenses
 - Delete expenses
-- Search expenses by category
-- Filter expenses by date range
-- Calculate total expenses
-- Calculate monthly expenses
+- Category-based filtering
+- Date-range filtering
+- Monthly expense calculation
+- Total expense calculation
 - Expense categorization
 
-### 💰 Budget Management
+## 💰 Budget Management
+
 - Create budgets
 - View budgets
 - Update budgets
 - Delete budgets
-- View budgets by user
+- User-specific budgets
 - Monthly budget management
 
-### 🏷️ Category Management
+## 🏷️ Category Management
+
 - Create categories
 - View categories
 - Update categories
 - Delete categories
 
-### 📊 Dashboard & Analytics
-- Expense dashboard
-- Monthly expense summary
-- Financial summary
-- Category-wise expense analysis
-- Analytics page
-- User-specific dashboard
+## 📊 Dashboard & Analytics
 
-### 📄 Reports
-Generate financial reports in multiple formats:
-- PDF reports
-- Excel reports
-- Analytics reports
+- Expense dashboard
+- Monthly summaries
+- Financial summaries
+- Category-wise analysis
+- User-specific analytics
+- Monthly and yearly statistics
+
+## 📄 Reports
+
+Generate financial reports in:
+
+- PDF
+- Excel
+
+Reports include:
+
 - Monthly summary
 - Yearly summary
 - Category-wise summary
+- Expense analytics
 
-### 📧 Email & OTP
-The application supports email communication using Gmail SMTP. Features include:
+## 📧 Email & OTP
+
+Email functionality is implemented using Gmail SMTP.
+
+Supported operations:
+
 - Registration OTP
 - Login OTP
-- Password reset email
+- Password reset
 - OTP verification
 - OTP resend
 
-> **Security:** Never commit your Gmail password, Google App Password, JWT secret, database password, or other secrets to GitHub.
-
-### 📱 SMS Expense Integration
-The project contains an SMS expense parser and webhook endpoint designed to receive bank transaction information.
-
-```
-POST /api/webhook/sms/{webhookToken}
-```
-
-This provides the backend integration point for a future Android application that can read transaction SMS messages and send relevant transaction information to the Expense Tracker backend.
+> ⚠️ Never commit email passwords, Google App Passwords, JWT secrets, database credentials, or API keys to GitHub.
 
 ---
 
-## 🛠️ Technology Stack
+# 📱 SMS Expense Integration
 
-**Backend**
+ExpenseX includes a webhook endpoint designed for integration with a future Android application that can read bank transaction SMS messages.
+
+```http
+POST /api/webhook/sms/{webhookToken}
+```
+
+### Architecture
+
+```text
+Bank SMS
+   ↓
+Android Application
+   ↓
+SMS Parser
+   ↓
+ExpenseX REST API
+   ↓
+Spring Boot
+   ↓
+MySQL
+   ↓
+Dashboard / Reports
+```
+
+This provides a foundation for automatically detecting and recording bank transactions.
+
+---
+
+# 🛠️ Technology Stack
+
+## Backend
+
 - Java 21
 - Spring Boot 3.5.4
 - Spring Web
@@ -97,16 +164,19 @@ This provides the backend integration point for a future Android application tha
 - Spring Mail
 - Thymeleaf
 
-**Database**
+## Database
+
 - MySQL 8.0
 
-**Authentication**
+## Authentication
+
 - JWT
 - Spring Security
 - Refresh Tokens
-- OTP verification
+- OTP Verification
 
-**Libraries**
+## Libraries
+
 - Lombok
 - ModelMapper
 - JJWT
@@ -114,20 +184,63 @@ This provides the backend integration point for a future Android application tha
 - iText PDF
 - Apache POI
 
-**API Documentation**
+## API Documentation
+
 - Springdoc OpenAPI
 - Swagger UI
 
-**DevOps**
+## DevOps
+
 - Docker
 - Docker Compose
 - Maven
 
 ---
 
-## 📁 Project Structure
+# 🏗️ Application Architecture
 
+```text
+                    ┌──────────────────┐
+                    │      User        │
+                    └────────┬─────────┘
+                             │
+                             ▼
+                    ┌──────────────────┐
+                    │   Thymeleaf UI   │
+                    └────────┬─────────┘
+                             │
+                             ▼
+                    ┌──────────────────┐
+                    │ Spring Security  │
+                    │   JWT + OTP      │
+                    └────────┬─────────┘
+                             │
+                             ▼
+                    ┌──────────────────┐
+                    │   Controllers    │
+                    └────────┬─────────┘
+                             │
+                             ▼
+                    ┌──────────────────┐
+                    │    Services      │
+                    └────────┬─────────┘
+                             │
+                             ▼
+                    ┌──────────────────┐
+                    │ Repository / JPA │
+                    └────────┬─────────┘
+                             │
+                             ▼
+                    ┌──────────────────┐
+                    │      MySQL       │
+                    └──────────────────┘
 ```
+
+---
+
+# 📂 Project Structure
+
+```text
 ExpenseTracker/
 │
 ├── src/
@@ -160,17 +273,17 @@ ExpenseTracker/
 
 ---
 
-## ⚙️ Requirements
+# ⚙️ Requirements
 
-Before running the application, install:
+Install the following before running the project:
 
 - Java 21
 - Maven
 - MySQL 8.0
 - Git
-- Docker Desktop (optional)
+- Docker Desktop *(optional)*
 
-Check versions:
+Check your installation:
 
 ```bash
 java -version
@@ -180,34 +293,34 @@ docker --version
 
 ---
 
-## 🗄️ Database Setup
+# 🗄️ Database Setup
 
-Create the MySQL database:
+Create the database:
 
 ```sql
 CREATE DATABASE expense_tracker;
 ```
 
-The application uses:
-
-| Setting | Value |
+| Configuration | Value |
 |---|---|
-| Database Name | `expense_tracker` |
-| Database Port | `3306` |
+| Database | `expense_tracker` |
+| Port | `3306` |
 
-The project uses:
+The application uses:
 
 ```properties
 spring.jpa.hibernate.ddl-auto=update
 ```
 
-Hibernate can therefore automatically create/update the required tables when the application starts.
+Hibernate will automatically create/update the required tables during development.
 
 ---
 
-## 🔑 Environment Variables
+# 🔑 Environment Configuration
 
-For security, use environment variables instead of storing credentials directly in the project.
+Use environment variables for sensitive configuration.
+
+Example:
 
 ```env
 DB_URL=jdbc:mysql://localhost:3306/expense_tracker
@@ -222,114 +335,114 @@ MAIL_USERNAME=your-email@gmail.com
 MAIL_APP_PASSWORD=YOUR_GOOGLE_APP_PASSWORD
 ```
 
-> **Important:** Do not upload the following to GitHub:
-> - `.env`
-> - `application.properties` containing passwords
-> - JWT secrets
-> - Database passwords
-> - Gmail App Passwords
-> - API keys
-> - Webhook secrets
->
-> If credentials were previously committed to GitHub, rotate them immediately.
+### Never commit
+
+```text
+.env
+Database passwords
+JWT secrets
+Gmail App Passwords
+API keys
+Webhook tokens
+Production credentials
+```
+
+If a secret has already been pushed to GitHub, **rotate it immediately**.
 
 ---
 
-## ▶️ Running Locally
+# ▶️ Run Locally
 
-**1. Clone the repository**
+## 1. Clone Repository
 
 ```bash
-git clone https://github.com/Lokesh-github07/ExpenseX.
-cd ExpenseTracker
+git clone https://github.com/Lokesh-github07/ExpenseX.git
+cd ExpenseX
 ```
 
-**2. Configure MySQL**
-
-Make sure MySQL is running and create the database:
+## 2. Create Database
 
 ```sql
 CREATE DATABASE expense_tracker;
 ```
 
-**3. Configure Environment Variables**
+## 3. Configure Environment Variables
 
-Set your database, JWT, and email credentials.
+Configure your database, JWT, and email credentials.
 
-**4. Build the Project**
-
-Using Maven:
+## 4. Build
 
 ```bash
 mvn clean install
 ```
 
-On Windows:
+Windows:
 
 ```bash
 mvnw.cmd clean install
 ```
 
-**5. Start the Application**
+## 5. Start Application
 
 ```bash
 mvn spring-boot:run
 ```
 
-Or on Windows:
+Windows:
 
 ```bash
 mvnw.cmd spring-boot:run
 ```
 
-The application will start on:
+Application:
 
-```
+```text
 http://localhost:8080
 ```
 
 ---
 
-## 🌐 Web Application
+# 🌐 Web Pages
 
-Open:
+Main application pages include:
 
+```text
+/
+├── /login
+├── /register
+├── /terms
+├── /forgot-password
+├── /dashboard
+├── /add-expense
+├── /edit-expense
+├── /profile
+└── /analytics
 ```
-http://localhost:8080
-```
-
-Typical application pages include:
-
-- `/`
-- `/login`
-- `/register`
-- `/terms`
-- `/forgot-password`
-- `/dashboard`
-- `/add-expense`
-- `/edit-expense`
-- `/profile`
-- `/analytics`
 
 ---
 
-## 🐳 Running with Docker
+# 🐳 Docker
 
-The project includes:
+ExpenseX can also run using Docker Compose.
 
-- `Dockerfile`
-- `docker-compose.yaml`
-- MySQL 8 Docker container
-- Spring Boot Docker container
+### Services
 
-The Docker setup contains two services:
+```text
+┌──────────────────────┐
+│   expense-tracker-app│
+│       :8080          │
+└──────────┬───────────┘
+           │
+           ▼
+┌──────────────────────┐
+│ expense-tracker-mysql│
+│       :3306          │
+└──────────────────────┘
+```
 
-- `expense-tracker-app`
-- `expense-tracker-mysql`
+## Start
 
-**1. Configure Environment Variables**
-
-Create a `.env` file in the project root:
+Create `.env`:
 
 ```env
 DB_PASSWORD=YOUR_DATABASE_PASSWORD
@@ -341,7 +454,7 @@ MAIL_USERNAME=your-email@gmail.com
 MAIL_APP_PASSWORD=YOUR_GOOGLE_APP_PASSWORD
 ```
 
-**2. Start Docker**
+Run:
 
 ```bash
 docker compose up --build
@@ -353,319 +466,200 @@ Run in background:
 docker compose up --build -d
 ```
 
-**3. Check Containers**
+Check containers:
 
 ```bash
 docker ps
 ```
 
-You should see containers similar to:
+Open:
 
-```
-expense-tracker-app
-expense-tracker-mysql
-```
-
-**4. Open Application**
-
-```
+```text
 http://localhost:8080
 ```
 
-MySQL is exposed to the host on:
-
-```
-localhost:3307
-```
-
-Inside Docker, the application connects to MySQL using:
-
-```
-mysql:3306
-```
-
-**5. Stop Docker**
+Stop:
 
 ```bash
 docker compose down
 ```
 
-To remove the database volume as well:
+Remove containers and database volume:
 
 ```bash
 docker compose down -v
 ```
 
-> **Warning:** Removing the volume deletes the MySQL container data.
+> ⚠️ `docker compose down -v` removes the MySQL Docker volume and its stored data.
 
 ---
 
-## 🔐 Authentication API
+# 📚 API Documentation
 
-Base URL: `http://localhost:8080/api/auth`
+Swagger UI:
 
-| Method | Endpoint | Description |
-|---|---|---|
-| POST | `/register` | Register a new user |
-| POST | `/verify-otp` | Verify registration OTP |
-| POST | `/resend-otp` | Resend OTP |
-| POST | `/login` | Login |
-| POST | `/login/verify-otp` | Verify login OTP |
-| POST | `/refresh-token` | Generate a new access token |
-| POST | `/forgot-password` | Request password reset |
-| POST | `/reset-password` | Reset password |
-| GET | `/health` | Authentication service health check |
-
----
-
-## 💸 Expense API
-
-Base URL: `http://localhost:8080/api/expenses`
-
-| Method | Endpoint | Description |
-|---|---|---|
-| POST | `/` | Create expense |
-| GET | `/` | Get expenses |
-| GET | `/{id}` | Get expense |
-| PUT | `/{id}` | Update expense |
-| DELETE | `/{id}` | Delete expense |
-| GET | `/category/{categoryId}` | Get expenses by category |
-| GET | `/date-range` | Get expenses by date range |
-| GET | `/total` | Get total expenses |
-| GET | `/monthly-total` | Get monthly total |
-
----
-
-## 💰 Budget API
-
-Base URL: `http://localhost:8080/api/budgets`
-
-| Method | Endpoint | Description |
-|---|---|---|
-| POST | `/` | Create budget |
-| GET | `/` | Get budgets |
-| GET | `/{id}` | Get budget |
-| PUT | `/{id}` | Update budget |
-| DELETE | `/{id}` | Delete budget |
-| GET | `/user/{userId}` | Get user budgets |
-| GET | `/month` | Get monthly budget |
-
----
-
-## 🏷️ Category API
-
-Base URL: `http://localhost:8080/api/categories`
-
-| Method | Endpoint | Description |
-|---|---|---|
-| POST | `/` | Create category |
-| GET | `/` | Get categories |
-| GET | `/{id}` | Get category |
-| PUT | `/{id}` | Update category |
-| DELETE | `/{id}` | Delete category |
-
----
-
-## 📊 Dashboard API
-
-Base URL: `http://localhost:8080/api/dashboard`
-
-| Method | Endpoint | Description |
-|---|---|---|
-| GET | `/` | Dashboard data |
-| GET | `/user/{userId}` | User dashboard |
-| GET | `/monthly` | Monthly dashboard |
-| GET | `/summary` | Financial summary |
-
----
-
-## 📄 Reports API
-
-Base URL: `http://localhost:8080/api/reports`
-
-| Method | Endpoint | Description |
-|---|---|---|
-| GET | `/analytics` | Analytics report |
-| GET | `/pdf` | Generate PDF report |
-| GET | `/excel` | Generate Excel report |
-| GET | `/monthly-summary` | Monthly summary |
-| GET | `/yearly-summary` | Yearly summary |
-| GET | `/category-summary` | Category summary |
-
----
-
-## 👤 User API
-
-Base URL: `http://localhost:8080/api/users`
-
-| Method | Endpoint | Description |
-|---|---|---|
-| GET | `/` | Get users |
-| GET | `/{id}` | Get user |
-| GET | `/email/{email}` | Find user by email |
-| PUT | `/{id}/profile` | Update profile |
-| PUT | `/change-password` | Change password |
-| DELETE | `/account` | Delete current account |
-| DELETE | `/{id}` | Delete user |
-| PUT | `/{id}/activate` | Activate account |
-| PUT | `/{id}/deactivate` | Deactivate account |
-
----
-
-## 📱 SMS Webhook
-
-The application includes an endpoint for receiving transaction information from an external application such as a future Android SMS integration.
-
-```
-POST /api/webhook/sms/{webhookToken}
-```
-
-**Possible architecture:**
-
-```
-Bank SMS
-   ↓
-Android Application
-   ↓
-SMS Parser
-   ↓
-Expense Tracker REST API
-   ↓
-Spring Boot
-   ↓
-MySQL
-   ↓
-Dashboard / Reports
-```
-
-This allows the project to be extended into a mobile expense-tracking system that automatically detects bank debit and credit SMS messages.
-
----
-
-## 📚 Swagger API Documentation
-
-The project includes Springdoc OpenAPI configuration.
-
-After starting the application, Swagger UI can normally be accessed at:
-
-```
+```text
 http://localhost:8080/swagger-ui/index.html
 ```
 
 OpenAPI specification:
 
-```
+```text
 http://localhost:8080/v3/api-docs
 ```
 
-Swagger can be used to:
+Swagger allows you to:
 
-- View API endpoints
-- Test APIs
-- Send GET/POST/PUT/DELETE requests
-- Inspect request parameters
-- Inspect API responses
-- Test authentication-protected endpoints
+- View APIs
+- Test endpoints
+- Inspect requests
+- Inspect responses
+- Test protected endpoints
 
 ---
 
-## 🧪 API Testing with Postman
+# 🔐 API Overview
 
-You can test the application using Postman.
+### Authentication
 
-Base URL:
-
-```
-http://localhost:8080
-```
-
-Example registration:
-
-```
+```text
 POST /api/auth/register
-```
-
-Example login:
-
-```
+POST /api/auth/verify-otp
+POST /api/auth/resend-otp
 POST /api/auth/login
+POST /api/auth/login/verify-otp
+POST /api/auth/refresh-token
+POST /api/auth/forgot-password
+POST /api/auth/reset-password
+GET  /api/auth/health
 ```
 
-After obtaining the JWT access token, use:
+### Expenses
 
-```
-Authorization: Bearer YOUR_ACCESS_TOKEN
+```text
+POST   /api/expenses
+GET    /api/expenses
+GET    /api/expenses/{id}
+PUT    /api/expenses/{id}
+DELETE /api/expenses/{id}
+GET    /api/expenses/category/{categoryId}
+GET    /api/expenses/date-range
+GET    /api/expenses/total
+GET    /api/expenses/monthly-total
 ```
 
-for protected API requests.
+### Budgets
+
+```text
+POST   /api/budgets
+GET    /api/budgets
+GET    /api/budgets/{id}
+PUT    /api/budgets/{id}
+DELETE /api/budgets/{id}
+GET    /api/budgets/user/{userId}
+GET    /api/budgets/month
+```
+
+### Categories
+
+```text
+POST   /api/categories
+GET    /api/categories
+GET    /api/categories/{id}
+PUT    /api/categories/{id}
+DELETE /api/categories/{id}
+```
+
+### Dashboard
+
+```text
+GET /api/dashboard
+GET /api/dashboard/user/{userId}
+GET /api/dashboard/monthly
+GET /api/dashboard/summary
+```
+
+### Reports
+
+```text
+GET /api/reports/analytics
+GET /api/reports/pdf
+GET /api/reports/excel
+GET /api/reports/monthly-summary
+GET /api/reports/yearly-summary
+GET /api/reports/category-summary
+```
+
+### Users
+
+```text
+GET    /api/users
+GET    /api/users/{id}
+GET    /api/users/email/{email}
+PUT    /api/users/{id}/profile
+PUT    /api/users/change-password
+DELETE /api/users/account
+DELETE /api/users/{id}
+PUT    /api/users/{id}/activate
+PUT    /api/users/{id}/deactivate
+```
 
 ---
 
-## 🔄 Application Flow
+# 🧪 Testing
 
-```
-                 ┌──────────────────┐
-                 │      User        │
-                 └────────┬─────────┘
-                          │
-                          ▼
-                 ┌──────────────────┐
-                 │  Web Interface   │
-                 │    Thymeleaf     │
-                 └────────┬─────────┘
-                          │
-                          ▼
-                 ┌──────────────────┐
-                 │ Spring Security  │
-                 │   + JWT + OTP    │
-                 └────────┬─────────┘
-                          │
-                          ▼
-                 ┌──────────────────┐
-                 │ REST Controllers │
-                 └────────┬─────────┘
-                          │
-                          ▼
-                 ┌──────────────────┐
-                 │    Services      │
-                 └────────┬─────────┘
-                          │
-                          ▼
-                 ┌──────────────────┐
-                 │ Spring Data JPA  │
-                 └────────┬─────────┘
-                          │
-                          ▼
-                 ┌──────────────────┐
-                 │      MySQL       │
-                 └──────────────────┘
+The application can be tested using:
+
+- JUnit
+- Mockito
+- Postman
+- Swagger UI
+- Selenium
+- Docker
+
+### Testing Flow
+
+```text
+Unit Testing
+     ↓
+Integration Testing
+     ↓
+API Testing
+     ↓
+Manual Testing
+     ↓
+UI Automation
+     ↓
+Docker Testing
+     ↓
+Deployment Testing
 ```
 
 ---
 
-## 🐳 Docker Architecture
+# 📦 Build JAR
 
+```bash
+mvn clean package -DskipTests
 ```
-                 Docker Compose
-                       │
-          ┌────────────┴────────────┐
-          │                         │
-          ▼                         ▼
- ┌─────────────────┐       ┌─────────────────┐
- │ Spring Boot App │──────▶│   MySQL 8.0     │
- │     :8080       │       │   :3306         │
- └─────────────────┘       └────────┬────────┘
-                                    │
-                                    ▼
-                              mysql-data
-                                volume
+
+Generated JAR:
+
+```text
+target/expense-tracker-0.0.1-SNAPSHOT.jar
+```
+
+Run:
+
+```bash
+java -jar target/expense-tracker-0.0.1-SNAPSHOT.jar
 ```
 
 ---
 
-## 🔒 Security Considerations
+# 🔒 Security
 
-This project uses several security mechanisms:
+ExpenseX uses:
 
 - Spring Security
 - JWT authentication
@@ -676,147 +670,81 @@ This project uses several security mechanisms:
 - SMTP authentication
 - Environment-based secrets
 
-**For production deployment:**
+For production:
 
-- Use HTTPS.
-- Generate a strong random JWT secret.
-- Never expose database credentials.
-- Never commit `.env`.
-- Use a Google App Password instead of a Gmail account password.
-- Use secure database credentials.
-- Configure proper CORS rules.
-- Protect the SMS webhook token.
-- Disable unnecessary debug logging.
-- Use a production database backup strategy.
+- Use HTTPS
+- Use strong JWT secrets
+- Secure database credentials
+- Configure restrictive CORS
+- Protect webhook tokens
+- Disable unnecessary debug logging
+- Maintain database backups
+- Never commit secrets
 
 ---
 
-## 📦 Build JAR
+# 🔮 Future Improvements
 
-Build the application:
-
-```bash
-mvn clean package -DskipTests
-```
-
-The generated JAR will be located in:
-
-```
-target/expense-tracker-0.0.1-SNAPSHOT.jar
-```
-
-Run it using:
-
-```bash
-java -jar target/expense-tracker-0.0.1-SNAPSHOT.jar
-```
+- 📱 Android application
+- 🏦 Automatic bank SMS transaction detection
+- 💳 UPI transaction detection
+- 🔔 Push notifications
+- 🔄 Recurring expenses
+- 🎯 Savings goals
+- 📈 Investment tracking
+- 💱 Multiple currencies
+- 🤖 AI-powered expense categorization
+- ☁️ Cloud deployment
+- 🔄 CI/CD pipeline
+- 🧪 Automated integration testing
+- 🧪 Automated API testing
+- 📋 Jira QA workflow
+- 👨‍💼 Admin dashboard
 
 ---
 
-## 🧹 Useful Docker Commands
+# 📊 Project Highlights
 
-| Command | Description |
-|---|---|
-| `docker ps` | View running containers |
-| `docker logs expense-tracker-app` | View application logs |
-| `docker logs -f expense-tracker-app` | Follow application logs |
-| `docker logs expense-tracker-mysql` | View MySQL logs |
-| `docker compose down` | Stop containers |
-| `docker compose up --build` | Rebuild |
-| `docker compose down -v` | Remove containers and database volume |
-
----
-
-## 📈 Future Improvements
-
-- Android mobile application
-- Automatic bank SMS transaction detection
-- Automatic debit/credit classification
-- UPI transaction detection
-- Push notifications
-- Recurring expenses
-- Savings goals
-- Investment tracking
-- Multiple currencies
-- Advanced financial analytics
-- Spending predictions
-- AI-powered expense categorization
-- Cloud deployment
-- CI/CD pipeline
-- Automated unit and integration testing
-- Automated Postman API testing
-- Jira-based QA workflow
-- Role-based admin dashboard
-
----
-
-## 🧪 Testing
-
-**Recommended testing tools:**
-
-- JUnit
-- Mockito
-- Postman
-- Swagger UI
-- Selenium
-- Playwright
-- Jira
-- Docker
-
-**Testing can cover:**
-
-```
-Unit Testing
-     ↓
-Integration Testing
-     ↓
+```text
+Java 21
+Spring Boot
+Spring Security
+JWT
+REST APIs
+MySQL
+JPA / Hibernate
+Thymeleaf
+OTP Authentication
+Email Integration
+PDF Reports
+Excel Reports
+Docker
+Docker Compose
+Swagger / OpenAPI
 API Testing
-     ↓
-Manual Testing
-     ↓
-Automation Testing
-     ↓
-Docker Testing
-     ↓
-Deployment Testing
+SMS Integration
 ```
 
 ---
 
-## 🌐 Deployment
-
-The application can be deployed using:
-
-- Docker
-- Oracle Cloud
-- VPS
-- AWS
-- Azure
-- Google Cloud
-- Cloudflare Tunnel for exposing a locally hosted application
-
-For production deployment, use a managed MySQL database or a properly secured MySQL server rather than exposing a local development database.
-
----
-
-## 👨‍💻 Author
+# 👨‍💻 Author
 
 **Lokesh Pande**
 
-Java Full Stack Developer | Spring Boot | REST APIs | MySQL | Docker | Manual & Automation Testing
+Java Full Stack Developer  
+Spring Boot • REST APIs • MySQL • Docker • Testing
+
+🔗 GitHub:  
+https://github.com/Lokesh-github07
 
 ---
 
-## ⭐ Project Highlights
+## ⭐ Project
 
-This project demonstrates practical experience with:
-
-Java 21 · Spring Boot · Spring Security · JWT · REST API · MySQL · JPA / Hibernate · Thymeleaf · OTP Authentication · Email Integration · PDF Generation · Excel Generation · Docker · Docker Compose · Swagger / OpenAPI · API Testing · SMS Integration
+If you find this project useful, consider giving it a ⭐ on GitHub.
 
 ---
 
 ## 📜 License
 
 This project is intended for educational, portfolio, and development purposes.
-
-You may modify and extend the project according to your requirements.
